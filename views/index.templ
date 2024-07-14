@@ -1,0 +1,18 @@
+
+package foo
+
+import "goth-template/views/layouts"
+
+templ Index() {
+	@layouts.Base() {
+		<div class="flex flex-col items-center text-bg-blue-300">
+			<h1 class="text-green-500">Go/HTMX/Tailwind/Templ stack</h1>
+			<div class="text-green-400">Hello there</div>
+			<div class="py-3">Hello there</div>
+			<div class="py-8">Hello there</div>
+			<div class="py-8 text-green-500">Hello there</div>
+			<div class="py-8 text-orange-500">Hello there</div>
+			<div>Hello there</div>
+		</div>
+	}
+}
