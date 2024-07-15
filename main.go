@@ -16,12 +16,16 @@ func main() {
 		log.Fatal(err)
 	}
 	r := chi.NewMux()
-	// Serve static files from the "public" directory
-	fs := http.FileServer(http.Dir("./public"))
-	http.Handle("/public/", http.StripPrefix("/public/", fs))
 
 	r.Handle("/*", public())
-	r.Get("/foo", handlers.Make(handlers.HandleFoo))
+
+	r.Get("/", handlers.Make(handlers.HandleHome))
+
+	r.Get("/auth/{provider}", handlers.Make(nil))
+	r.Get("/auth/{provider}/callback", handlers.Make(nil))
+	r.Get("/auth/logout/{provider}", handlers.Make(nil))
+	r.Get("/auth/login", handlers.Make(handlers.HandleLogin))
+
 	listenAddr := os.Getenv("LISTEN_ADDR")
 	http.ListenAndServe(listenAddr, r)
 }

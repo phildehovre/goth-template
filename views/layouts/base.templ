@@ -1,4 +1,7 @@
+
 package layouts
+
+import "goth-template/views/components"
 
 templ Base() {
 	<!DOCTYPE html>
@@ -9,9 +12,13 @@ templ Base() {
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<link rel="stylesheet" href="/public/styles.css"/>
-			//   TODO:P Add cdn's (jquery, htmx, etc)
+			<!-- Include the Alpine library on your page -->
+			<script src="https://unpkg.com/alpinejs" defer></script>
+			<script scr="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></script>
+			<script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
 		</head>
 		<body class="antialiased">
+			@components.Navigation()
 			{ children... }
 		</body>
 	</html>
