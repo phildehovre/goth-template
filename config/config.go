@@ -34,7 +34,7 @@ var Envs = initConfig()
 func initConfig() Config {
 	return Config{
 		PublicHost:              getEnv("PUBLIC_HOST", "http://localhost"),
-		Port:                    getEnv("LISTEN_ADDR", "8080"),
+		Port:                    getEnv("LISTEN_ADDR", "4000"),
 		DBUser:                  getEnv("DB_USER", "root"),
 		DBPassword:              getEnv("DB_PASSWORD", "mypassword"),
 		DBAddress:               fmt.Sprintf("%s:%s", getEnv("DB_HOST", "127.0.0.1"), getEnv("DB_PORT", "3306")),
@@ -43,12 +43,12 @@ func initConfig() Config {
 		CookiesAuthAgeInSeconds: getEnvAsInt("COOKIES_AUTH_AGE_IN_SECONDS", twoDaysInSeconds),
 		CookiesAuthIsSecure:     getEnvAsBool("COOKIES_AUTH_IS_SECURE", false),
 		CookiesAuthIsHttpOnly:   getEnvAsBool("COOKIES_AUTH_IS_HTTP_ONLY", false),
-		GoogleClientID:          getEnvOrError("GOOGLE_CLIENT_ID"),
-		GoogleClientSecret:      getEnvOrError("GOOGLE_CLIENT_SECRET"),
-		FacebookClientID:        getEnvOrError("FACEBOOK_CLIENT_ID"),
-		FacebookClientSecret:    getEnvOrError("FACEBOOK_CLIENT_SECRET"),
-		TwitterClientID:         getEnvOrError("TWITTER_CLIENT_ID"),
-		TwitterClientSecret:     getEnvOrError("TWITTER_CLIENT_SECRET"),
+		GoogleClientID:          os.Getenv("GOOGLE_CLIENT_ID"),
+		GoogleClientSecret:      os.Getenv("GOOGLE_SECRET"),
+		// FacebookClientID:        getEnvOrError("FACEBOOK_CLIENT_ID"),
+		// FacebookClientSecret:    getEnvOrError("FACEBOOK_CLIENT_SECRET"),
+		// TwitterClientID:         getEnvOrError("TWITTER_CLIENT_ID"),
+		// TwitterClientSecret:     getEnvOrError("TWITTER_CLIENT_SECRET"),
 	}
 }
 

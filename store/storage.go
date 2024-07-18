@@ -9,7 +9,7 @@ import (
 
 func NewMySQLStorage(cfg mysql.Config) (*sql.DB, error) {
 	connStr := ""
-	db, err := sql.Open("postgres", connStr)
+	db, err := sql.Open("mysql", connStr)
 	if err != nil {
 		log.Fatal(err)
 	}
