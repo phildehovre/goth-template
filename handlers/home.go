@@ -5,8 +5,12 @@ import (
 	"net/http"
 )
 
-func HandleHome(w http.ResponseWriter, r *http.Request) error {
-	return Render(w, r, home.Index())
+func (h *Handler) HandleHome(w http.ResponseWriter, r *http.Request) error {
+	u, err := h.auth.GetUserSession(r)
+	if err != nil {
+		return err
+	}
+	return Render(w, r, home.Index(u))
 }
 
 func HandleFoo(w http.ResponseWriter, r *http.Request) error {

@@ -31,7 +31,7 @@ func main() {
 
 	r.Handle("/*", public())
 
-	r.Get("/", handlers.Make(handlers.HandleHome))
+	r.Get("/", handlers.Make(handler.HandleHome))
 	r.Get("/foo", auth.RequireAuth(handlers.Make(handlers.HandleFoo), authProvider))
 
 	r.Get("/auth/{provider}", handlers.Make(handler.HandleProviderLogin))
